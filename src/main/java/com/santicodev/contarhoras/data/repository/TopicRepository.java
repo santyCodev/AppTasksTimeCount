@@ -1,4 +1,4 @@
-package com.santicodev.contarhoras.data;
+package com.santicodev.contarhoras.data.repository;
 
 import com.santicodev.contarhoras.data.entity.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;

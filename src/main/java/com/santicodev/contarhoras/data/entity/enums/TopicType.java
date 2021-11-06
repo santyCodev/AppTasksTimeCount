@@ -1,4 +1,4 @@
-package com.santicodev.contarhoras.data.enums;
+package com.santicodev.contarhoras.data.entity.enums;
 
 public enum TopicType {
 

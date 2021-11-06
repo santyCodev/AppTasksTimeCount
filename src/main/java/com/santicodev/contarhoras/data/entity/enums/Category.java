@@ -1,4 +1,4 @@
-package com.santicodev.contarhoras.data.enums;
+package com.santicodev.contarhoras.data.entity.enums;
 
 public enum Category {
     MUSIC, DRAWING, ENGLISH, WEB_DEV, DEV_OTHER;

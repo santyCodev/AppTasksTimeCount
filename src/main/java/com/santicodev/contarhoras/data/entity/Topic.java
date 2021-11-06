@@ -1,7 +1,7 @@
 package com.santicodev.contarhoras.data.entity;
 
-import com.santicodev.contarhoras.data.enums.Category;
-import com.santicodev.contarhoras.data.enums.TopicType;
+import com.santicodev.contarhoras.data.entity.enums.Category;
+import com.santicodev.contarhoras.data.entity.enums.TopicType;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -43,12 +43,16 @@ public class Topic {
     @Column(name = "minutos")
     private int minutos;
 
-    public Topic(String topicName, TopicType type, Category category, int horas, int minutos) {
+    @Column(name = "dia")
+    private Date dia;
+
+    public Topic(String topicName, TopicType type, Category category, int horas, int minutos, Date dia) {
         this.topicName = topicName;
         this.type = type;
         this.category = category;
         this.horas = horas;
         this.minutos = minutos;
+        this.dia = dia;
     }
 
     public Topic() {}
@@ -99,5 +103,13 @@ public class Topic {
 
     public void setMinutos(int minutos) {
         this.minutos = minutos;
+    }
+
+    public Date getDia() {
+        return dia;
+    }
+
+    public void setDia(Date dia) {
+        this.dia = dia;
     }
 }

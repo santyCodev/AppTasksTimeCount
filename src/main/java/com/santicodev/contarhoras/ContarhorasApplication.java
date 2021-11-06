@@ -1,16 +1,16 @@
 package com.santicodev.contarhoras;
 
-import com.santicodev.contarhoras.data.TopicRepository;
+import com.santicodev.contarhoras.data.repository.TopicRepository;
 import com.santicodev.contarhoras.data.entity.Topic;
-import com.santicodev.contarhoras.data.enums.Category;
-import com.santicodev.contarhoras.data.enums.TopicType;
+import com.santicodev.contarhoras.data.entity.enums.Category;
+import com.santicodev.contarhoras.data.entity.enums.TopicType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.sql.Date;
 
 @SpringBootApplication
 public class ContarhorasApplication {
@@ -26,7 +26,9 @@ public class ContarhorasApplication {
 			Topic topic;
 			numTopicType = 0;
 			for (int i=0; i<10; i++){
-				topicRepository.save(new Topic("Topic "+i, topicTypeByNum(), categoryByNum(i), i+2, i+2));
+				topicRepository.save(new Topic("Topic "+i, topicTypeByNum(),
+									categoryByNum(i), i+2, i+2,
+									new Date(new java.util.Date().getTime())));
 			}
 		};
 	}
