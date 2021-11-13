@@ -33,18 +33,32 @@ public class TopicService {
         newTopic.setDia(new Date(new java.util.Date().getTime()));
         newTopic.setType(topicDTO.getTopicType());
         newTopic.setNumSemana(topicDTO.getNumSemana());
-        newTopic.setMinutos();
-        newTopic.setHoras();
+        newTopic.setMinutos(contarMinutos(topicDTO.getHoraInicio(), topicDTO.getHoraFin()));
+        newTopic.setHoras(contarHoras(topicDTO.getHoraInicio(), topicDTO.getHoraFin()));
 
         return topicRepository.save(newTopic);
     }
 
-    private Topic calcularHorasYMinutos(String horaInicio, String horaFinal, Topic newTopic){
-        //hora = hh:mm
+    private int contarMinutos(String horaInicio, String horaFinal){
         int minInit = Integer.parseInt(horaInicio.substring(3));
         int minFin = Integer.parseInt(horaFinal.substring(3));
-        int horaInit = Integer.parseInt(horaInicio.substring(0,3));
-        int horaFin = Integer.parseInt(horaFinal.substring(0,3));
+        int totalMinutes = 0;
+        if(minInit > minFin) { totalMinutes = (60 - minInit) + minFin; }
+        else { totalMinutes = minFin - minInit; }
+
+        return totalMinutes;
     }
 
+    private int contarHoras(String horaInicio, String horaFinal){
+        int horaInit = Integer.parseInt(horaInicio.substring(0,2));
+        int horaFin = Integer.parseInt(horaFinal.substring(0,2));
+        int totalhoras = 0;
+        if(horaInit > horaFin) { totalhoras = (24 - horaInit) + horaFin; }
+        else { totalhoras = horaFin - horaInit; }
+        return totalhoras;
+    }
+
+    private int contar(int init, int fin){
+        return fin - init;
+    }
 }

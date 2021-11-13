@@ -23,7 +23,7 @@ public class TopicController {
     }
 
     @PostMapping
-    public Topic saveTopics(@RequestBody @Validated TopicDTO topicDto) {
-        return new ResponseEntity();
+    public Topic saveTopic(@RequestBody @Validated TopicDTO topicDto) {
+        return topicService.saveTopic(topicDto);
     }
 }

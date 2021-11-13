@@ -1,5 +1,7 @@
 package com.santicodev.contarhoras;
 
+import com.santicodev.contarhoras.business.dto.TopicDTO;
+import com.santicodev.contarhoras.business.service.TopicService;
 import com.santicodev.contarhoras.data.repository.TopicRepository;
 import com.santicodev.contarhoras.data.entity.Topic;
 import com.santicodev.contarhoras.data.entity.enums.Category;
@@ -16,19 +18,25 @@ import java.sql.Date;
 public class ContarhorasApplication {
 
 	@Autowired
-	TopicRepository topicRepository;
+	TopicService topicService;
 
 	int numTopicType;
 
 	@Bean
 	public CommandLineRunner run (){
 		return args -> {
-			Topic topic;
+
 			numTopicType = 0;
 			for (int i=0; i<10; i++){
-				topicRepository.save(new Topic("Topic "+i, topicTypeByNum(),
-									categoryByNum(i), i+2, i+2,
-									new Date(new java.util.Date().getTime()),1));
+				TopicDTO topicDto = new TopicDTO();
+				topicDto.setTopicName("Topic "+i);
+				topicDto.setTopicType(topicTypeByNum());
+				topicDto.setCategory(categoryByNum(i));
+				topicDto.setHoraInicio("02:02");
+				topicDto.setHoraFin("05:45");
+				topicDto.setDia(new Date(new java.util.Date().getTime()));
+				topicDto.setNumSemana(i+1);
+				topicService.saveTopic(topicDto);
 			}
 		};
 	}
