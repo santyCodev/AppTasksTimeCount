@@ -28,7 +28,7 @@ public class ContarhorasApplication {
 			for (int i=0; i<10; i++){
 				topicRepository.save(new Topic("Topic "+i, topicTypeByNum(),
 									categoryByNum(i), i+2, i+2,
-									new Date(new java.util.Date().getTime())));
+									new Date(new java.util.Date().getTime()),1));
 			}
 		};
 	}

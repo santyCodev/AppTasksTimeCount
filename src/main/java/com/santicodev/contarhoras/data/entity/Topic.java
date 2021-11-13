@@ -46,13 +46,17 @@ public class Topic {
     @Column(name = "dia")
     private Date dia;
 
-    public Topic(String topicName, TopicType type, Category category, int horas, int minutos, Date dia) {
+    @Column(name = "num_semana")
+    private int numSemana;
+
+    public Topic(String topicName, TopicType type, Category category, int horas, int minutos, Date dia, int numSemana) {
         this.topicName = topicName;
         this.type = type;
         this.category = category;
         this.horas = horas;
         this.minutos = minutos;
         this.dia = dia;
+        this.numSemana = numSemana;
     }
 
     public Topic() {}
@@ -111,5 +115,13 @@ public class Topic {
 
     public void setDia(Date dia) {
         this.dia = dia;
+    }
+
+    public int getNumSemana() {
+        return numSemana;
+    }
+
+    public void setNumSemana(int numSemana) {
+        this.numSemana = numSemana;
     }
 }
