@@ -40,25 +40,19 @@ public class TopicService {
     }
 
     private int contarMinutos(String horaInicio, String horaFinal){
-        int minInit = Integer.parseInt(horaInicio.substring(3));
-        int minFin = Integer.parseInt(horaFinal.substring(3));
-        int totalMinutes = 0;
-        if(minInit > minFin) { totalMinutes = (60 - minInit) + minFin; }
-        else { totalMinutes = minFin - minInit; }
-
-        return totalMinutes;
+        return contar(Integer.parseInt(horaInicio.substring(3)),
+                      Integer.parseInt(horaFinal.substring(3)),60);
     }
 
     private int contarHoras(String horaInicio, String horaFinal){
-        int horaInit = Integer.parseInt(horaInicio.substring(0,2));
-        int horaFin = Integer.parseInt(horaFinal.substring(0,2));
-        int totalhoras = 0;
-        if(horaInit > horaFin) { totalhoras = (24 - horaInit) + horaFin; }
-        else { totalhoras = horaFin - horaInit; }
-        return totalhoras;
+        return contar(Integer.parseInt(horaInicio.substring(0,2)),
+                      Integer.parseInt(horaFinal.substring(0,2)), 24);
     }
 
-    private int contar(int init, int fin){
-        return fin - init;
+    private int contar(int init, int fin, int max){
+        int total = 0;
+        if(init > fin) { total = (max - init) + fin; }
+        else { total = fin - init; }
+        return total;
     }
 }
